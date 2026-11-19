@@ -1,16 +1,93 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Marketplace de Sites</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sites Profissionais para o Seu Negócio</title>
+  <meta name="description" content="Crio sites rápidos e bonitos para pequenos negócios, com botão de WhatsApp, mapa e tudo pronto para celular.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Sites Prontos para Venda</h1>
-    <div id="sites-container"></div>
-  </div>
+  <header class="topo">
+    <div class="wrap nav">
+      <a href="#" class="logo">&lt;SeuNome/&gt;</a>
+      <nav>
+        <a href="#servicos">Serviços</a>
+        <a href="#modelos">Modelos</a>
+        <a href="#precos">Preços</a>
+        <a href="#contato" class="btn btn-sm">Fale comigo</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Seu negócio merece um <span>site profissional</span></h1>
+      <p>Sites rápidos, bonitos e prontos para celular. Seus clientes te encontram no Google e falam com você direto pelo WhatsApp.</p>
+      <div class="acoes">
+        <a href="#modelos" class="btn">Ver modelos</a>
+        <a href="#contato" class="btn btn-claro">Pedir orçamento</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" class="wrap secao">
+    <h2>O que eu faço</h2>
+    <div class="grade">
+      <div class="card"><div class="icone">🌐</div><h3>Sites para negócios</h3><p>Barbearias, salões, restaurantes, clínicas e lojas.</p></div>
+      <div class="card"><div class="icone">🚀</div><h3>Landing pages</h3><p>Páginas de venda para produtos, cursos e eventos.</p></div>
+      <div class="card"><div class="icone">📱</div><h3>100% celular</h3><p>Funciona perfeitamente em qualquer tela.</p></div>
+      <div class="card"><div class="icone">💬</div><h3>Botão de WhatsApp</h3><p>O cliente clica e já fala com você.</p></div>
+    </div>
+  </section>
+
+  <section id="modelos" class="fundo-cinza">
+    <div class="wrap secao">
+      <h2>Modelos prontos</h2>
+      <p class="sub">Clique para ver como o site do seu negócio pode ficar.</p>
+      <div class="grade" id="modelos-lista"></div>
+    </div>
+  </section>
+
+  <section id="precos" class="wrap secao">
+    <h2>Preços</h2>
+    <div class="grade precos">
+      <div class="card plano">
+        <h3>Básico</h3>
+        <p class="valor">R$ 350</p>
+        <ul><li>Site de 1 página</li><li>Botão de WhatsApp</li><li>Mapa e horários</li><li>Entrega em até 5 dias</li></ul>
+        <a href="#contato" class="btn">Quero esse</a>
+      </div>
+      <div class="card plano destaque">
+        <span class="selo">Mais pedido</span>
+        <h3>Profissional</h3>
+        <p class="valor">R$ 700</p>
+        <ul><li>Tudo do Básico</li><li>Até 4 seções extras</li><li>Galeria de fotos</li><li>Aparecer no Google</li></ul>
+        <a href="#contato" class="btn">Quero esse</a>
+      </div>
+      <div class="card plano">
+        <h3>Manutenção</h3>
+        <p class="valor">R$ 80<small>/mês</small></p>
+        <ul><li>Atualizações de texto e fotos</li><li>Site sempre no ar</li><li>Suporte pelo WhatsApp</li></ul>
+        <a href="#contato" class="btn">Quero esse</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="contato">
+    <div class="wrap secao">
+      <h2>Vamos criar o seu site?</h2>
+      <p>Me conte sobre o seu negócio e receba um orçamento grátis.</p>
+      <form id="form-contato">
+        <input id="nome" placeholder="Seu nome" required>
+        <input id="negocio" placeholder="Tipo de negócio (ex: barbearia)" required>
+        <button class="btn" type="submit">Enviar pelo WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="rodape">© <span id="ano"></span> SeuNome · Criação de sites</footer>
+
   <script src="script.js"></script>
 </body>
 </html>

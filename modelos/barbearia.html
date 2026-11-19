@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbearia Navalha de Ouro</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: #121212; color: #eee; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+    .ouro { color: #d4a24c; }
+    header { padding: 18px 0; border-bottom: 1px solid #2a2a2a; }
+    header .wrap { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.3rem; font-weight: bold; }
+    .btn { display: inline-block; background: #d4a24c; color: #121212; padding: 12px 26px; border-radius: 4px; font-weight: bold; font-family: system-ui, sans-serif; }
+    .btn:hover { background: #e8b65f; }
+    .hero { text-align: center; padding: 110px 0; background: radial-gradient(circle at center, #2a2116, #121212 70%); }
+    .hero h1 { font-size: 2.8rem; margin-bottom: 12px; }
+    .hero p { color: #bbb; margin-bottom: 28px; font-family: system-ui, sans-serif; }
+    section { padding: 70px 0; }
+    h2 { text-align: center; font-size: 2rem; margin-bottom: 36px; }
+    .servicos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; font-family: system-ui, sans-serif; }
+    .item { display: flex; justify-content: space-between; padding: 18px; background: #1c1c1c; border-left: 3px solid #d4a24c; border-radius: 4px; }
+    .item b { color: #d4a24c; }
+    .info { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; font-family: system-ui, sans-serif; }
+    .info div { background: #1c1c1c; padding: 24px; border-radius: 6px; }
+    .info h3 { color: #d4a24c; margin-bottom: 10px; font-family: Georgia, serif; }
+    iframe { width: 100%; height: 260px; border: 0; border-radius: 6px; margin-top: 24px; filter: grayscale(1) invert(.9); }
+    footer { text-align: center; padding: 24px; color: #777; font-size: .9rem; border-top: 1px solid #2a2a2a; font-family: system-ui, sans-serif; }
+    .zap { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; font-size: 1.8rem; box-shadow: 0 4px 14px rgba(0,0,0,.4); }
+    @media (max-width: 600px) { .hero h1 { font-size: 2rem; } header .btn { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <span class="logo">💈 Navalha <span class="ouro">de Ouro</span></span>
+      <a class="btn" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio." target="_blank">Agendar</a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>Estilo e tradição <span class="ouro">desde 2015</span></h1>
+      <p>Corte, barba e cuidado masculino com quem entende do assunto.</p>
+      <a class="btn" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio." target="_blank">Agende pelo WhatsApp</a>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>Serviços <span class="ouro">&amp;</span> Preços</h2>
+      <div class="servicos">
+        <div class="item">Corte de cabelo <b>R$ 40</b></div>
+        <div class="item">Barba completa <b>R$ 30</b></div>
+        <div class="item">Corte + Barba <b>R$ 60</b></div>
+        <div class="item">Pigmentação <b>R$ 25</b></div>
+        <div class="item">Sobrancelha <b>R$ 15</b></div>
+        <div class="item">Corte infantil <b>R$ 35</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#181818">
+    <div class="wrap">
+      <h2>Onde estamos</h2>
+      <div class="info">
+        <div><h3>Endereço</h3><p>Rua Exemplo, 123 – Centro<br>Sua Cidade – UF</p></div>
+        <div><h3>Horários</h3><p>Seg a Sex: 9h às 20h<br>Sábado: 8h às 18h<br>Domingo: fechado</p></div>
+        <div><h3>Contato</h3><p>WhatsApp: (00) 00000-0000<br>Instagram: @navalhadeouro</p></div>
+      </div>
+      <iframe src="https://www.google.com/maps?q=Pra%C3%A7a%20da%20S%C3%A9%2C%20S%C3%A3o%20Paulo&output=embed" loading="lazy" title="Mapa"></iframe>
+    </div>
+  </section>
+
+  <footer>© Barbearia Navalha de Ouro · Site modelo de demonstração</footer>
+
+  <a class="zap" href="https://wa.me/5500000000000" target="_blank" aria-label="WhatsApp">💬</a>
+</body>
+</html>
