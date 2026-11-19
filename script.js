@@ -1,6 +1,6 @@
 // ===== CONFIGURE AQUI =====
 // Coloque seu número com DDI e DDD, só números. Ex: 5511999998888
-const WHATSAPP = '5500000000000';
+const WHATSAPP = '5541988063503';
 
 // Lista de modelos de site. Para adicionar um novo, crie o arquivo em /modelos e coloque aqui.
 const modelos = [
