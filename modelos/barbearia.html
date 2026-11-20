@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Navalha de Ouro · Barbearia</title>
+<title>Navalha d'Ouro · Barbearia em Curitiba</title>
+<meta name="description" content="Barbearia Navalha d'Ouro: corte, barba e cuidado masculino em Curitiba. Agende online em segundos.">
+<meta name="theme-color" content="#0b0b0c">
+<meta property="og:title" content="Navalha d'Ouro · Barbearia">
+<meta property="og:description" content="Corte, barba e o Clube d'Ouro. Agende online.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0b0c'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='%23c9a45c' font-family='Georgia'>N</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -130,6 +136,62 @@ footer{padding:40px 0;text-align:center;color:var(--mut);font-size:.8rem;border-
 .toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,150%);background:var(--card);border:1px solid var(--ouro);padding:16px 26px;border-radius:14px;z-index:90;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .toast.on{transform:translate(-50%,0)}
 
+/* acessibilidade */
+.pular{position:absolute;left:-999px;top:10px;background:var(--ouro);color:#111;padding:10px 16px;border-radius:8px;z-index:200}
+.pular:focus{left:10px}
+:focus-visible{outline:2px solid var(--ouro);outline-offset:3px}
+/* consentimento */
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--mut);margin-bottom:18px;cursor:pointer}
+.consent input{margin-top:4px;accent-color:var(--ouro);width:16px;height:16px;flex:none}
+.consent a,.cookie a,.rodape-links a{color:var(--ouro);text-decoration:underline}
+/* banner de cookies */
+.cookie{position:fixed;left:20px;bottom:20px;max-width:420px;background:rgba(26,26,29,.96);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:18px;padding:22px;z-index:120;font-size:.86rem;color:#cfcdc8;transform:translateY(140%);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.cookie.on{transform:none}
+.cookie b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--txt);margin-bottom:6px}
+.cookie .acoes{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.cookie .btn{padding:10px 18px;font-size:.82rem}
+/* mapa bloqueado */
+.mapa-off{min-height:320px;height:100%;border-radius:20px;border:1px dashed var(--line);display:grid;place-items:center;text-align:center;padding:30px;color:var(--mut);font-size:.9rem;background:var(--card)}
+/* rodapé completo */
+.rodape{border-top:1px solid var(--line);padding:70px 0 30px;text-align:left}
+.rodape-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.rodape h4{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;font-weight:600}
+.rodape p,.rodape li{color:var(--mut);font-size:.88rem;list-style:none;margin-bottom:8px}
+.rodape li a:hover{color:var(--ouro)}
+.rodape-links{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;border-top:1px solid var(--line);padding-top:24px;font-size:.78rem;color:var(--mut)}
+.rodape-links a{text-decoration:none;color:var(--mut)}
+.rodape-links a:hover{color:var(--ouro)}
+button.link{background:none;border:0;color:var(--mut);font:inherit;cursor:pointer;padding:0}
+button.link:hover{color:var(--ouro)}
+/* ANIMAÇÕES EXTRAS */
+.cursor{position:fixed;top:0;left:0;width:36px;height:36px;border:1px solid var(--ouro);border-radius:50%;pointer-events:none;z-index:300;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s;mix-blend-mode:difference}
+.cursor.grande{width:70px;height:70px;background:rgba(201,164,92,.25)}
+.ponto{position:fixed;top:0;left:0;width:5px;height:5px;background:var(--ouro);border-radius:50%;pointer-events:none;z-index:301;transform:translate(-50%,-50%)}
+@media(hover:none){.cursor,.ponto{display:none}}
+.letreiro{overflow:hidden;border-bottom:1px solid var(--line);padding:22px 0;white-space:nowrap}
+.letreiro div{display:inline-block;animation:corre 30s linear infinite;font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;color:var(--mut)}
+.letreiro span{margin:0 28px}.letreiro i{color:var(--ouro);font-style:normal}
+@keyframes corre{to{transform:translateX(-50%)}}
+.hero{overflow:hidden}
+.brilho{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,164,92,.18),transparent 65%);pointer-events:none;transform:translate(-50%,-50%);left:50%;top:40%;transition:left .8s ease-out,top .8s ease-out}
+.particula{position:absolute;bottom:-10px;width:2px;height:2px;background:var(--ouro);border-radius:50%;opacity:0;animation:flutua linear infinite}
+@keyframes flutua{10%{opacity:.8}90%{opacity:.4}100%{transform:translateY(-105vh);opacity:0}}
+h2.rev{clip-path:inset(0 0 100% 0);transform:translateY(30px);transition:clip-path 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1),opacity 1s}
+h2.rev.on{clip-path:inset(0 0 -20% 0)}
+.serv{position:relative;overflow:hidden}
+.serv::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--ouro);transition:width .6s cubic-bezier(.2,.7,.2,1)}
+.serv:hover::after{width:100%}
+.serv:hover .preco{transform:scale(1.12)}
+.preco{transition:transform .4s}
+.depo blockquote{transition:transform .5s,border-color .5s}
+.depo blockquote:hover{transform:translateY(-8px) rotate(-.5deg);border-color:var(--ouro)}
+.voltar-topo{position:fixed;right:30px;bottom:96px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ouro);display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(20px);transition:.4s;z-index:60}
+.voltar-topo.on{opacity:1;transform:none}
+.loader{position:fixed;inset:0;background:var(--bg);z-index:500;display:grid;place-items:center;transition:opacity .8s,visibility .8s}
+.loader.fora{opacity:0;visibility:hidden}
+.loader span{font-family:'Cormorant Garamond',serif;font-size:2.4rem;letter-spacing:.1em;background:linear-gradient(90deg,var(--mut) 40%,var(--ouro2) 50%,var(--mut) 60%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:carrega 1.4s linear infinite}
+@keyframes carrega{from{background-position:100% 0}to{background-position:-100% 0}}
+@media(max-width:860px){.rodape-grid{grid-template-columns:1fr 1fr}.cookie{left:12px;right:12px;max-width:none}}
 @media(max-width:860px){
  nav a:not(.btn){display:none}
  .ritual-grid,.agenda,.local{grid-template-columns:1fr}
@@ -143,7 +205,10 @@ footer{padding:40px 0;text-align:center;color:var(--mut);font-size:.8rem;border-
 </style>
 </head>
 <body>
+<div class="loader" id="loader" aria-hidden="true"><span>Navalha d'Ouro</span></div>
+<a href="#conteudo" class="pular">Pular para o conteúdo</a>
 <div id="progresso"></div>
+<div class="cursor" id="cursor"></div><div class="ponto" id="ponto"></div>
 
 <header id="topo">
  <div class="wrap">
@@ -157,7 +222,9 @@ footer{padding:40px 0;text-align:center;color:var(--mut);font-size:.8rem;border-
  </div>
 </header>
 
-<section class="hero">
+<main id="conteudo">
+<section class="hero" id="hero">
+ <div class="brilho" id="brilho"></div>
  <div>
   <span class="tag">Barbearia · Desde 2015</span>
   <h1 id="titulo">A arte do <em>corte perfeito</em></h1>
@@ -170,6 +237,10 @@ footer{padding:40px 0;text-align:center;color:var(--mut);font-size:.8rem;border-
  <div class="rolar"></div>
 </section>
 
+<div class="letreiro" aria-hidden="true"><div>
+ <span>Corte assinatura</span><i>✦</i><span>Barba de navalha</span><i>✦</i><span>Ritual completo</span><i>✦</i><span>Clube d'Ouro</span><i>✦</i><span>Café coado na hora</span><i>✦</i>
+ <span>Corte assinatura</span><i>✦</i><span>Barba de navalha</span><i>✦</i><span>Ritual completo</span><i>✦</i><span>Clube d'Ouro</span><i>✦</i><span>Café coado na hora</span><i>✦</i>
+</div></div>
 <div class="numeros">
  <div class="rev"><b data-n="12000">0</b><span>Cortes feitos</span></div>
  <div class="rev"><b data-n="4.9" data-dec="1">0</b><span>Nota no Google</span></div>
@@ -243,6 +314,7 @@ footer{padding:40px 0;text-align:center;color:var(--mut);font-size:.8rem;border-
     </div>
    </div>
    <div class="campo" id="campo-contato" style="display:none"><label for="contato" id="label-contato">Telefone</label><input id="contato"></div>
+   <label class="consent"><input type="checkbox" id="aceite"> <span>Li e concordo com a <a href="privacidade.html" target="_blank">Política de Privacidade</a> e autorizo o uso dos meus dados apenas para agendar e confirmar meu horário.</span></label>
    <div class="resumo" id="resumo">Preencha os campos para ver o resumo.</div>
    <div class="erro" id="erro"></div>
    <button class="btn" style="width:100%;justify-content:center" type="submit">Confirmar reserva</button>
@@ -267,14 +339,32 @@ footer{padding:40px 0;text-align:center;color:var(--mut);font-size:.8rem;border-
   <div class="info rev esq">
    <span class="tag">Onde estamos</span>
    <h2>Venha nos <em class="ouro">visitar</em></h2>
-   <p><b>Endereço</b>Rua Exemplo, 123 · Centro<br>Sua Cidade · UF</p>
+   <p><b>Endereço</b>Rua Exemplo, 123 · Centro<br>Curitiba · PR</p>
    <p><b>Contato</b>(41) 98806-3503<br>@navalhadeouro</p>
   </div>
-  <div class="rev dir"><iframe src="https://www.google.com/maps?q=Pra%C3%A7a%20Tiradentes%2C%20Curitiba&output=embed" loading="lazy" title="Mapa"></iframe></div>
+  <div class="rev dir" id="mapa"><div class="mapa-off"><div>O mapa é fornecido pelo Google, que pode usar cookies.<br><br><button class="btn btn-ghost" type="button" id="carregar-mapa">Mostrar mapa</button></div></div></div>
  </div>
 </section>
 
-<footer>© Navalha d'Ouro · Site modelo de demonstração</footer>
+</main>
+<footer class="rodape">
+ <div class="wrap">
+  <div class="rodape-grid">
+   <div><a href="#" class="logo">Navalha <span class="ouro">d'Ouro</span></a><p style="margin-top:14px">Barbearia e cuidado masculino desde 2015.</p><p>CNPJ 00.000.000/0001-00<br>Navalha d'Ouro Barbearia LTDA</p></div>
+   <div><h4>Visite</h4><p>Rua Exemplo, 123 · Centro<br>Curitiba · PR · 80000-000</p><p>Seg–Sex 9h–20h<br>Sáb 8h–18h</p></div>
+   <div><h4>Contato</h4><ul><li><a href="https://wa.me/5541988063503" target="_blank" rel="noopener">WhatsApp (41) 98806-3503</a></li><li><a href="mailto:contato@navalhadeouro.com.br">contato@navalhadeouro.com.br</a></li><li><a href="#" rel="noopener">Instagram @navalhadeouro</a></li></ul></div>
+   <div><h4>Legal</h4><ul><li><a href="privacidade.html">Política de Privacidade</a></li><li><a href="termos.html">Termos de Uso</a></li><li><a href="privacidade.html#cookies">Política de Cookies</a></li><li><button class="link" id="abrir-cookies">Preferências de cookies</button></li><li><a href="privacidade.html#direitos">Seus direitos (LGPD)</a></li></ul></div>
+  </div>
+  <div class="rodape-links"><span>© <span id="ano"></span> Navalha d'Ouro. Todos os direitos reservados.</span><span>Encarregado de dados: <a href="mailto:privacidade@navalhadeouro.com.br">privacidade@navalhadeouro.com.br</a></span></div>
+ </div>
+</footer>
+
+<div class="cookie" id="cookie" role="dialog" aria-label="Aviso de cookies">
+ <b>Sua privacidade importa</b>
+ Usamos apenas o essencial para o site funcionar. Com sua permissão, também carregamos o mapa do Google. Veja a <a href="privacidade.html#cookies">Política de Cookies</a>.
+ <div class="acoes"><button class="btn" id="ck-aceitar">Aceitar todos</button><button class="btn btn-ghost" id="ck-recusar">Só essenciais</button></div>
+</div>
+<button class="voltar-topo" id="voltar-topo" aria-label="Voltar ao topo">↑</button>
 
 <a class="zap" href="https://wa.me/5541988063503" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.8 1.5 7 0 12.7-5.7 12.7-12.6C28.8 8.7 23 3 16 3zm0 23.1c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.3 1.1 1.2-4.2-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.3 9.8 10.1 5.1 16 5.1s10.6 4.7 10.6 10.5S21.9 26.1 16 26.1zm5.8-7.8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.6 8.6 0 0 1-4.3-3.7c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.7 1.2 3.1 1.3 3.3 2.3 3.5 5.5 4.9c2 .9 2.8.9 3.8.8.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.7-.4z"/></svg></a>
 
@@ -383,6 +473,7 @@ document.getElementById('form-agenda').addEventListener('submit',e=>{e.preventDe
  if(!dataIn.value)return erro.textContent='Escolha o dia.';
  if(!hora)return erro.textContent='Escolha um horário.';
  if(canal!=='whatsapp'&&!contatoIn.value.trim())return erro.textContent='Informe seu contato.';
+ if(!document.getElementById('aceite').checked)return erro.textContent='Para agendar, aceite a Política de Privacidade.';
  const s=servicos[sel.value];
  const forma={whatsapp:'por WhatsApp',ligacao:'por ligação no '+contatoIn.value,email:'por e-mail ('+contatoIn.value+')'}[canal];
  abrirZap(`Olá! Quero reservar um horário:\n• Nome: ${nomeIn.value}\n• Serviço: ${s.n} (R$ ${s.p})${estiloEscolhido?'\n• Estilo: '+estiloEscolhido:''}\n• Dia: ${dataBR()}\n• Horário: ${hora}\n• Prefiro confirmar ${forma}.`);
@@ -390,6 +481,45 @@ document.getElementById('form-agenda').addEventListener('submit',e=>{e.preventDe
 });
 function abrirZap(msg){open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank')}
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),3500)}
+
+// ===== Cookies (LGPD) =====
+const CK='navalha-cookies';
+function lerCk(){try{return localStorage.getItem(CK)}catch(e){return null}}
+function gravarCk(v){try{localStorage.setItem(CK,v)}catch(e){}}
+const banner=document.getElementById('cookie');
+function aplicarCk(v){if(v==='todos')carregarMapa()}
+function decidir(v){gravarCk(v);banner.classList.remove('on');aplicarCk(v)}
+document.getElementById('ck-aceitar').onclick=()=>decidir('todos');
+document.getElementById('ck-recusar').onclick=()=>decidir('essenciais');
+document.getElementById('abrir-cookies').onclick=()=>banner.classList.add('on');
+const ck=lerCk(); if(ck)aplicarCk(ck); else setTimeout(()=>banner.classList.add('on'),1800);
+function carregarMapa(){const m=document.getElementById('mapa');if(m.querySelector('iframe'))return;
+ m.innerHTML='<iframe src="https://www.google.com/maps?q=Pra%C3%A7a%20Tiradentes%2C%20Curitiba&output=embed" loading="lazy" title="Mapa da barbearia"></iframe>'}
+document.getElementById('carregar-mapa').onclick=carregarMapa;
+document.getElementById('ano').textContent=new Date().getFullYear();
+
+// ===== Animações extras =====
+const semMov=matchMedia('(prefers-reduced-motion: reduce)').matches;
+addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('fora'),400));
+setTimeout(()=>document.getElementById('loader').classList.add('fora'),2500);
+// cursor
+const cur=document.getElementById('cursor'),pt=document.getElementById('ponto');let cx=0,cy=0,mx=0,my=0;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;pt.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`});
+(function seg(){cx+=(mx-cx)*.15;cy+=(my-cy)*.15;cur.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;requestAnimationFrame(seg)})();
+document.querySelectorAll('a,button,.chip,.op,input,select').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('grande'));el.addEventListener('mouseleave',()=>cur.classList.remove('grande'))});
+// botões magnéticos
+if(!semMov)document.querySelectorAll('.btn').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`});b.addEventListener('mouseleave',()=>b.style.transform='')});
+// brilho do hero segue o mouse + partículas douradas
+const hero=document.getElementById('hero'),bri=document.getElementById('brilho');
+hero.addEventListener('mousemove',e=>{const r=hero.getBoundingClientRect();bri.style.left=(e.clientX-r.left)+'px';bri.style.top=(e.clientY-r.top)+'px'});
+if(!semMov)for(let i=0;i<30;i++){const p=document.createElement('span');p.className='particula';p.style.left=Math.random()*100+'%';p.style.animationDuration=(8+Math.random()*10)+'s';p.style.animationDelay=(-Math.random()*15)+'s';p.style.width=p.style.height=(1+Math.random()*2.5)+'px';hero.appendChild(p)}
+// parallax suave do título
+const tit=document.getElementById('titulo');
+addEventListener('scroll',()=>{if(scrollY<innerHeight&&!semMov){tit.style.transform=`translateY(${scrollY*.35}px)`;tit.style.opacity=1-scrollY/(innerHeight*.9)}
+ document.getElementById('voltar-topo').classList.toggle('on',scrollY>innerHeight)},{passive:true});
+document.getElementById('voltar-topo').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+// cascata nos depoimentos e números
+document.querySelectorAll('.depo .rev,.numeros .rev').forEach((el,i)=>el.style.transitionDelay=(i%4*150)+'ms');
 </script>
 </body>
 </html>
