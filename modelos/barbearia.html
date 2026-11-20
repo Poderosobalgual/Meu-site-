@@ -1,81 +1,395 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barbearia Navalha de Ouro</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Georgia, 'Times New Roman', serif; background: #121212; color: #eee; line-height: 1.6; }
-    a { color: inherit; text-decoration: none; }
-    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
-    .ouro { color: #d4a24c; }
-    header { padding: 18px 0; border-bottom: 1px solid #2a2a2a; }
-    header .wrap { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.3rem; font-weight: bold; }
-    .btn { display: inline-block; background: #d4a24c; color: #121212; padding: 12px 26px; border-radius: 4px; font-weight: bold; font-family: system-ui, sans-serif; }
-    .btn:hover { background: #e8b65f; }
-    .hero { text-align: center; padding: 110px 0; background: radial-gradient(circle at center, #2a2116, #121212 70%); }
-    .hero h1 { font-size: 2.8rem; margin-bottom: 12px; }
-    .hero p { color: #bbb; margin-bottom: 28px; font-family: system-ui, sans-serif; }
-    section { padding: 70px 0; }
-    h2 { text-align: center; font-size: 2rem; margin-bottom: 36px; }
-    .servicos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; font-family: system-ui, sans-serif; }
-    .item { display: flex; justify-content: space-between; padding: 18px; background: #1c1c1c; border-left: 3px solid #d4a24c; border-radius: 4px; }
-    .item b { color: #d4a24c; }
-    .info { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; font-family: system-ui, sans-serif; }
-    .info div { background: #1c1c1c; padding: 24px; border-radius: 6px; }
-    .info h3 { color: #d4a24c; margin-bottom: 10px; font-family: Georgia, serif; }
-    iframe { width: 100%; height: 260px; border: 0; border-radius: 6px; margin-top: 24px; filter: grayscale(1) invert(.9); }
-    footer { text-align: center; padding: 24px; color: #777; font-size: .9rem; border-top: 1px solid #2a2a2a; font-family: system-ui, sans-serif; }
-    .zap { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; font-size: 1.8rem; box-shadow: 0 4px 14px rgba(0,0,0,.4); }
-    @media (max-width: 600px) { .hero h1 { font-size: 2rem; } header .btn { display: none; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navalha de Ouro · Barbearia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0c;--bg2:#141416;--card:#1a1a1d;--line:#2a2a2e;--ouro:#c9a45c;--ouro2:#e8cc8a;--txt:#ecebe8;--mut:#9a9893}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:Manrope,system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.ouro{color:var(--ouro)}
+.tag{display:inline-block;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ouro);margin-bottom:14px}
+h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.1;margin-bottom:18px}
+section{padding:110px 0;position:relative}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;background:linear-gradient(135deg,var(--ouro),var(--ouro2));color:#111;font-weight:700;font-size:.92rem;border:0;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(201,164,92,.35)}
+.btn-ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ouro);box-shadow:none}
+
+/* barra de progresso de rolagem */
+#progresso{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--ouro),var(--ouro2));width:0;z-index:100}
+
+/* menu */
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .4s,backdrop-filter .4s,padding .4s;padding:26px 0}
+header.solido{background:rgba(11,11,12,.75);backdrop-filter:blur(14px);padding:14px 0;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.05em}
+nav a{margin-left:30px;font-size:.88rem;color:var(--mut);transition:color .3s}
+nav a:hover{color:var(--ouro)}
+
+/* hero */
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:120px 20px 80px;background:
+ radial-gradient(ellipse at 50% 30%,rgba(201,164,92,.16),transparent 60%),
+ repeating-linear-gradient(45deg,transparent 0 40px,rgba(255,255,255,.012) 40px 41px)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(3rem,10vw,7rem);line-height:.95;letter-spacing:-.01em}
+.hero h1 em{color:var(--ouro);font-style:italic}
+.hero p{color:var(--mut);max-width:520px;margin:26px auto 38px;font-size:1.05rem}
+.hero .acoes{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.letra{display:inline-block;opacity:0;transform:translateY(60%);animation:sobe .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes sobe{to{opacity:1;transform:none}}
+.rolar{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);width:24px;height:40px;border:1px solid var(--mut);border-radius:20px}
+.rolar::after{content:'';position:absolute;top:8px;left:50%;width:3px;height:8px;margin-left:-1.5px;background:var(--ouro);border-radius:2px;animation:bolinha 1.8s infinite}
+@keyframes bolinha{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+
+/* faixa de números */
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.numeros div{padding:40px 10px;text-align:center;border-right:1px solid var(--line)}
+.numeros div:last-child{border:0}
+.numeros b{display:block;font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:500;color:var(--ouro)}
+.numeros span{font-size:.8rem;color:var(--mut);letter-spacing:.1em;text-transform:uppercase}
+
+/* animação ao rolar */
+.rev{opacity:0;transform:translateY(50px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.rev.esq{transform:translateX(-60px)}
+.rev.dir{transform:translateX(60px)}
+.rev.zoom{transform:scale(.9)}
+.rev.on{opacity:1;transform:none}
+
+/* serviços */
+.servicos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:50px}
+.serv{background:var(--bg);padding:34px 30px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;transition:background .4s}
+.serv:hover{background:var(--bg2)}
+.serv h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.6rem}
+.serv p{color:var(--mut);font-size:.88rem}
+.serv .preco{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--ouro);white-space:nowrap}
+
+/* proposta fora da caixa */
+.ritual{background:var(--bg2)}
+.ritual-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.cartao{position:relative;aspect-ratio:1.6;border-radius:20px;padding:30px;background:linear-gradient(135deg,#232018,#0e0e0f 60%,#2a2416);border:1px solid rgba(201,164,92,.4);box-shadow:0 30px 80px rgba(0,0,0,.6);display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s ease-out;transform-style:preserve-3d}
+.cartao::before{content:'';position:absolute;inset:0;border-radius:20px;background:linear-gradient(115deg,transparent 30%,rgba(232,204,138,.18) 50%,transparent 70%);background-size:250% 100%;animation:brilho 5s infinite}
+@keyframes brilho{from{background-position:150% 0}to{background-position:-100% 0}}
+.cartao .topo{display:flex;justify-content:space-between;font-size:.75rem;letter-spacing:.25em;color:var(--ouro)}
+.cartao .nome{font-family:'Cormorant Garamond',serif;font-size:2.2rem}
+.cartao .rodape{display:flex;justify-content:space-between;font-size:.8rem;color:var(--mut)}
+.beneficios{list-style:none;margin:26px 0 30px}
+.beneficios li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;color:#cfcdc8}
+.beneficios li::before{content:'✦';color:var(--ouro)}
+.preco-clube{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--ouro)}
+.preco-clube small{font-size:1rem;color:var(--mut);font-family:Manrope}
+
+/* quiz */
+.quiz{max-width:720px;margin:50px auto 0;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:40px;text-align:center}
+.quiz h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.8rem;margin-bottom:24px}
+.opcoes{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.op{padding:12px 22px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--txt);cursor:pointer;font:inherit;transition:.3s}
+.op:hover{border-color:var(--ouro);color:var(--ouro)}
+.resultado h4{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--ouro);font-weight:500}
+.resultado p{color:var(--mut);margin:10px 0 24px}
+.passo-quiz{animation:aparece .5s}
+@keyframes aparece{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+
+/* agendamento */
+.agenda{display:grid;grid-template-columns:1fr 1.3fr;gap:60px}
+.form{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px}
+.campo{margin-bottom:24px}
+.campo>label{display:block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+.campo input,.campo select{width:100%;padding:14px 16px;background:var(--bg);border:1px solid var(--line);border-radius:12px;color:var(--txt);font:inherit;transition:border .3s}
+.campo input:focus,.campo select:focus{outline:0;border-color:var(--ouro)}
+input[type=date]::-webkit-calendar-picker-indicator{filter:invert(.7)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--txt);cursor:pointer;font:inherit;font-size:.88rem;transition:.25s}
+.chip:hover{border-color:var(--ouro)}
+.chip.sel{background:var(--ouro);color:#111;border-color:var(--ouro);font-weight:700}
+.chip:disabled{opacity:.25;cursor:not-allowed;text-decoration:line-through}
+.resumo{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:16px;font-size:.9rem;color:var(--mut);margin-bottom:20px}
+.resumo b{color:var(--txt)}
+.erro{color:#e67b6b;font-size:.85rem;margin-top:-10px;margin-bottom:14px;min-height:1em}
+
+/* depoimentos e local */
+.depo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:50px}
+.depo blockquote{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic}
+.depo cite{display:block;margin-top:16px;font-family:Manrope;font-style:normal;font-size:.8rem;color:var(--ouro);letter-spacing:.1em}
+.local{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:stretch}
+.local iframe{width:100%;height:100%;min-height:320px;border:0;border-radius:20px;filter:grayscale(1) invert(.92) contrast(.9)}
+.info p{color:var(--mut);margin-bottom:22px}
+.info b{color:var(--txt);display:block;font-weight:600}
+footer{padding:40px 0;text-align:center;color:var(--mut);font-size:.8rem;border-top:1px solid var(--line)}
+
+.zap{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;z-index:60;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:transform .3s}
+.zap:hover{transform:scale(1.1)}
+.zap svg{width:28px;fill:#fff}
+
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,150%);background:var(--card);border:1px solid var(--ouro);padding:16px 26px;border-radius:14px;z-index:90;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.toast.on{transform:translate(-50%,0)}
+
+@media(max-width:860px){
+ nav a:not(.btn){display:none}
+ .ritual-grid,.agenda,.local{grid-template-columns:1fr}
+ .numeros{grid-template-columns:1fr 1fr}
+ .numeros div:nth-child(2){border-right:0}
+ .numeros div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+ section{padding:80px 0}
+ .quiz,.form{padding:26px 20px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rev,.letra{opacity:1;transform:none}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <span class="logo">💈 Navalha <span class="ouro">de Ouro</span></span>
-      <a class="btn" href="https://wa.me/5541988063503?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio." target="_blank">Agendar</a>
-    </div>
-  </header>
+<div id="progresso"></div>
 
-  <div class="hero">
-    <div class="wrap">
-      <h1>Estilo e tradição <span class="ouro">desde 2015</span></h1>
-      <p>Corte, barba e cuidado masculino com quem entende do assunto.</p>
-      <a class="btn" href="https://wa.me/5541988063503?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio." target="_blank">Agende pelo WhatsApp</a>
-    </div>
+<header id="topo">
+ <div class="wrap">
+  <a href="#" class="logo">Navalha <span class="ouro">d'Ouro</span></a>
+  <nav>
+   <a href="#servicos">Serviços</a>
+   <a href="#clube">Clube</a>
+   <a href="#estilo">Seu estilo</a>
+   <a href="#agendar" class="btn" style="padding:10px 22px">Agendar</a>
+  </nav>
+ </div>
+</header>
+
+<section class="hero">
+ <div>
+  <span class="tag">Barbearia · Desde 2015</span>
+  <h1 id="titulo">A arte do <em>corte perfeito</em></h1>
+  <p class="rev">Um ritual de cuidado masculino. Ambiente reservado, café coado na hora e profissionais que tratam cada detalhe como assinatura.</p>
+  <div class="acoes rev">
+   <a href="#agendar" class="btn">Reservar horário →</a>
+   <a href="#estilo" class="btn btn-ghost">Descobrir meu estilo</a>
   </div>
+ </div>
+ <div class="rolar"></div>
+</section>
 
-  <section>
-    <div class="wrap">
-      <h2>Serviços <span class="ouro">&amp;</span> Preços</h2>
-      <div class="servicos">
-        <div class="item">Corte de cabelo <b>R$ 40</b></div>
-        <div class="item">Barba completa <b>R$ 30</b></div>
-        <div class="item">Corte + Barba <b>R$ 60</b></div>
-        <div class="item">Pigmentação <b>R$ 25</b></div>
-        <div class="item">Sobrancelha <b>R$ 15</b></div>
-        <div class="item">Corte infantil <b>R$ 35</b></div>
-      </div>
+<div class="numeros">
+ <div class="rev"><b data-n="12000">0</b><span>Cortes feitos</span></div>
+ <div class="rev"><b data-n="4.9" data-dec="1">0</b><span>Nota no Google</span></div>
+ <div class="rev"><b data-n="6">0</b><span>Barbeiros</span></div>
+ <div class="rev"><b data-n="11">0</b><span>Anos de casa</span></div>
+</div>
+
+<section id="servicos">
+ <div class="wrap">
+  <span class="tag rev">O cardápio</span>
+  <h2 class="rev">Serviços <em class="ouro">assinados</em></h2>
+  <div class="servicos" id="lista-servicos"></div>
+ </div>
+</section>
+
+<!-- PROPOSTA FORA DA CAIXA 1: Clube de assinatura -->
+<section id="clube" class="ritual">
+ <div class="wrap ritual-grid">
+  <div class="rev esq">
+   <div class="cartao" id="cartao">
+    <div class="topo"><span>CLUBE D'OURO</span><span>MEMBRO</span></div>
+    <div class="nome serif">Seu Nome</div>
+    <div class="rodape"><span>Nº 0247</span><span>Válido o ano todo</span></div>
+   </div>
+  </div>
+  <div class="rev dir">
+   <span class="tag">Novidade · Fora da caixa</span>
+   <h2>Seja <em class="ouro">membro</em>, não cliente.</h2>
+   <p style="color:var(--mut)">Uma assinatura mensal para quem leva o visual a sério. Você nunca mais paga por corte e ainda tem regalias que ninguém mais tem.</p>
+   <ul class="beneficios">
+    <li>Cortes e barba ilimitados no mês</li>
+    <li>Horário prioritário: os melhores horários são seus</li>
+    <li>Uma bebida da casa por visita (café, chope ou whisky)</li>
+    <li>Leve um amigo grátis no dia do seu aniversário</li>
+   </ul>
+   <div class="preco-clube">R$ 129<small> /mês</small></div>
+   <br>
+   <a class="btn" id="btn-clube" href="#">Quero ser membro →</a>
+  </div>
+ </div>
+</section>
+
+<!-- PROPOSTA FORA DA CAIXA 2: Quiz de estilo -->
+<section id="estilo">
+ <div class="wrap" style="text-align:center">
+  <span class="tag rev">Consultoria grátis</span>
+  <h2 class="rev">Qual corte combina <em class="ouro">com você?</em></h2>
+  <p class="rev" style="color:var(--mut)">Responda 3 perguntas rápidas e receba a recomendação do nosso mestre barbeiro.</p>
+  <div class="quiz rev zoom" id="quiz"></div>
+ </div>
+</section>
+
+<section id="agendar" style="background:var(--bg2)">
+ <div class="wrap agenda">
+  <div class="rev esq">
+   <span class="tag">Agendamento</span>
+   <h2>Reserve seu <em class="ouro">horário</em></h2>
+   <p style="color:var(--mut);margin-bottom:24px">Escolha o serviço, o dia e o horário. Depois é só dizer como prefere confirmar: a gente cuida do resto.</p>
+   <p style="color:var(--mut)">Seg a Sex · 9h às 20h<br>Sábado · 8h às 18h<br>Domingo · fechado</p>
+  </div>
+  <form class="form rev dir" id="form-agenda" novalidate>
+   <div class="campo"><label for="nome">Seu nome</label><input id="nome" placeholder="Como podemos te chamar?" autocomplete="name"></div>
+   <div class="campo"><label for="servico">Serviço</label><select id="servico"></select></div>
+   <div class="campo"><label for="data">Dia</label><input type="date" id="data"></div>
+   <div class="campo"><label>Horário</label><div class="chips" id="horarios"><span style="color:var(--mut);font-size:.88rem">Escolha um dia primeiro</span></div></div>
+   <div class="campo"><label>Como quer confirmar?</label>
+    <div class="chips" id="canal">
+     <button type="button" class="chip sel" data-v="whatsapp">💬 WhatsApp</button>
+     <button type="button" class="chip" data-v="ligacao">📞 Me liguem</button>
+     <button type="button" class="chip" data-v="email">✉️ E-mail</button>
     </div>
-  </section>
+   </div>
+   <div class="campo" id="campo-contato" style="display:none"><label for="contato" id="label-contato">Telefone</label><input id="contato"></div>
+   <div class="resumo" id="resumo">Preencha os campos para ver o resumo.</div>
+   <div class="erro" id="erro"></div>
+   <button class="btn" style="width:100%;justify-content:center" type="submit">Confirmar reserva</button>
+  </form>
+ </div>
+</section>
 
-  <section style="background:#181818">
-    <div class="wrap">
-      <h2>Onde estamos</h2>
-      <div class="info">
-        <div><h3>Endereço</h3><p>Rua Exemplo, 123 – Centro<br>Sua Cidade – UF</p></div>
-        <div><h3>Horários</h3><p>Seg a Sex: 9h às 20h<br>Sábado: 8h às 18h<br>Domingo: fechado</p></div>
-        <div><h3>Contato</h3><p>WhatsApp: (00) 00000-0000<br>Instagram: @navalhadeouro</p></div>
-      </div>
-      <iframe src="https://www.google.com/maps?q=Pra%C3%A7a%20da%20S%C3%A9%2C%20S%C3%A3o%20Paulo&output=embed" loading="lazy" title="Mapa"></iframe>
-    </div>
-  </section>
+<section>
+ <div class="wrap">
+  <span class="tag rev">Quem já sentou na cadeira</span>
+  <h2 class="rev">O que dizem <em class="ouro">por aí</em></h2>
+  <div class="depo">
+   <blockquote class="rev">"Melhor degradê da cidade. E o café é coisa séria."<cite>— CLIENTE DESDE 2019</cite></blockquote>
+   <blockquote class="rev">"Entrei no clube e nunca mais fiquei sem horário."<cite>— MEMBRO DO CLUBE</cite></blockquote>
+   <blockquote class="rev">"O quiz acertou em cheio. Mudou meu visual."<cite>— NOVO CLIENTE</cite></blockquote>
+  </div>
+ </div>
+</section>
 
-  <footer>© Barbearia Navalha de Ouro · Site modelo de demonstração</footer>
+<section style="padding-top:0">
+ <div class="wrap local">
+  <div class="info rev esq">
+   <span class="tag">Onde estamos</span>
+   <h2>Venha nos <em class="ouro">visitar</em></h2>
+   <p><b>Endereço</b>Rua Exemplo, 123 · Centro<br>Sua Cidade · UF</p>
+   <p><b>Contato</b>(41) 98806-3503<br>@navalhadeouro</p>
+  </div>
+  <div class="rev dir"><iframe src="https://www.google.com/maps?q=Pra%C3%A7a%20Tiradentes%2C%20Curitiba&output=embed" loading="lazy" title="Mapa"></iframe></div>
+ </div>
+</section>
 
-  <a class="zap" href="https://wa.me/5541988063503" target="_blank" aria-label="WhatsApp">💬</a>
+<footer>© Navalha d'Ouro · Site modelo de demonstração</footer>
+
+<a class="zap" href="https://wa.me/5541988063503" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.8 1.5 7 0 12.7-5.7 12.7-12.6C28.8 8.7 23 3 16 3zm0 23.1c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.3 1.1 1.2-4.2-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.3 9.8 10.1 5.1 16 5.1s10.6 4.7 10.6 10.5S21.9 26.1 16 26.1zm5.8-7.8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.6 8.6 0 0 1-4.3-3.7c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.7 1.2 3.1 1.3 3.3 2.3 3.5 5.5 4.9c2 .9 2.8.9 3.8.8.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.7-.4z"/></svg></a>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const WHATSAPP='5541988063503';
+const servicos=[
+ {n:'Corte assinatura',d:'Consultoria, lavagem e finalização',p:55,t:45},
+ {n:'Barba de navalha',d:'Toalha quente e óleos essenciais',p:45,t:30},
+ {n:'Ritual completo',d:'Corte + barba + massagem facial',p:90,t:75},
+ {n:'Degradê',d:'Do zero ao topo, sem marcas',p:50,t:40},
+ {n:'Pigmentação',d:'Cobertura natural e duradoura',p:35,t:20},
+ {n:'Sobrancelha',d:'Alinhamento discreto na navalha',p:20,t:10},
+];
+
+// Título letra por letra
+(function(){const h=document.getElementById('titulo');let i=0;
+const partes=[...h.childNodes];h.innerHTML='';
+ partes.forEach(n=>{const alvo=n.nodeType===3?h:h.appendChild(document.createElement('em'));
+  [...n.textContent].forEach(c=>{const s=document.createElement('span');s.className='letra';s.textContent=c===' '?' ':c;s.style.animationDelay=(i++*35)+'ms';alvo.appendChild(s)})})})();
+
+// Serviços
+const lista=document.getElementById('lista-servicos'),sel=document.getElementById('servico');
+servicos.forEach((s,i)=>{
+ lista.insertAdjacentHTML('beforeend',`<div class="serv rev" style="transition-delay:${i%3*120}ms"><div><h3>${s.n}</h3><p>${s.d} · ${s.t} min</p></div><span class="preco">R$ ${s.p}</span></div>`);
+ sel.insertAdjacentHTML('beforeend',`<option value="${i}">${s.n} · R$ ${s.p}</option>`);
+});
+
+// Animação ao rolar + contadores
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('on');
+ const b=e.target.querySelector('[data-n]');if(b)contar(b);io.unobserve(e.target)}),{threshold:.15});
+document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+function contar(b){const fim=+b.dataset.n,dec=+(b.dataset.dec||0),t0=performance.now();
+ (function f(t){const k=Math.min((t-t0)/1800,1),v=fim*(1-Math.pow(1-k,3));b.textContent=dec?v.toFixed(dec):Math.round(v).toLocaleString('pt-BR')+(k===1&&fim>1000?'+':'');if(k<1)requestAnimationFrame(f)})(t0)}
+
+// Menu e barra de progresso
+const topo=document.getElementById('topo'),prog=document.getElementById('progresso');
+addEventListener('scroll',()=>{topo.classList.toggle('solido',scrollY>60);
+ prog.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%'},{passive:true});
+
+// Cartão 3D segue o mouse
+const cartao=document.getElementById('cartao');
+cartao.addEventListener('mousemove',e=>{const r=cartao.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+ cartao.style.transform=`perspective(900px) rotateY(${x*18}deg) rotateX(${-y*18}deg)`});
+cartao.addEventListener('mouseleave',()=>cartao.style.transform='');
+document.getElementById('btn-clube').addEventListener('click',e=>{e.preventDefault();
+ abrirZap('Olá! Quero ser membro do Clube d\'Ouro (R$ 129/mês). Como funciona?')});
+
+// Quiz de estilo
+const perguntas=[
+ {q:'Qual o formato do seu rosto?',o:['Redondo','Quadrado','Oval','Alongado']},
+ {q:'Quanto tempo você gasta arrumando o cabelo?',o:['Nada, acordo e saio','Uns 5 minutos','Gosto de caprichar']},
+ {q:'Qual vibe você quer passar?',o:['Clássico e elegante','Moderno e ousado','Discreto e prático']},
+];
+const estilos={
+ 'Clássico e elegante':{n:'Side Part Executivo',d:'Risca lateral marcada, laterais curtas e topo com volume. Sofisticação que funciona do escritório ao jantar.'},
+ 'Moderno e ousado':{n:'Mid Fade Texturizado',d:'Degradê médio com topo bagunçado e textura. Atual, marcante e com muita personalidade.'},
+ 'Discreto e prático':{n:'Crew Cut',d:'Curto, limpo e alinhado. Zero manutenção e sempre com cara de quem acabou de sair da barbearia.'},
+};
+let resp=[];const quiz=document.getElementById('quiz');
+function passo(){
+ if(resp.length<perguntas.length){const p=perguntas[resp.length];
+  quiz.innerHTML=`<div class="passo-quiz"><span class="tag">Pergunta ${resp.length+1} de ${perguntas.length}</span><h3>${p.q}</h3><div class="opcoes">${p.o.map(o=>`<button class="op">${o}</button>`).join('')}</div></div>`;
+  quiz.querySelectorAll('.op').forEach(b=>b.onclick=()=>{resp.push(b.textContent);passo()});
+ }else{const e=estilos[resp[2]],extra=resp[1]==='Nada, acordo e saio'?' Vamos adaptar para ficar bom sem precisar de pomada.':'';
+  quiz.innerHTML=`<div class="passo-quiz resultado"><span class="tag">Seu corte ideal</span><h4>${e.n}</h4><p>${e.d}${extra}</p><div class="opcoes"><a href="#agendar" class="btn" id="quiz-agendar">Agendar esse corte →</a><button class="op" id="refazer">Refazer</button></div></div>`;
+  document.getElementById('refazer').onclick=()=>{resp=[];passo()};
+  document.getElementById('quiz-agendar').onclick=()=>{sel.value=0;estiloEscolhido=e.n;atualizar()};
+ }}
+let estiloEscolhido='';passo();
+
+// Agendamento
+const dataIn=document.getElementById('data'),horas=document.getElementById('horarios'),nomeIn=document.getElementById('nome');
+const contatoIn=document.getElementById('contato'),campoContato=document.getElementById('campo-contato');
+let hora='',canal='whatsapp';
+const hoje=new Date();hoje.setHours(0,0,0,0);
+dataIn.min=iso(hoje);const max=new Date(hoje);max.setDate(max.getDate()+30);dataIn.max=iso(max);
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+dataIn.addEventListener('change',()=>{
+ hora='';const d=new Date(dataIn.value+'T00:00'),dia=d.getDay();
+ if(dia===0){horas.innerHTML='<span style="color:#e67b6b;font-size:.88rem">Fechado aos domingos. Escolha outro dia.</span>';atualizar();return}
+ const fim=dia===6?18:20,ini=dia===6?8:9,agora=new Date();let h='';
+ for(let x=ini;x<fim;x++)for(const m of[0,30]){const slot=new Date(d);slot.setHours(x,m);
+  const passou=slot<agora,ocupado=((x*7+m+d.getDate()*3)%5)===0; // simula horários já ocupados
+  h+=`<button type="button" class="chip" ${passou||ocupado?'disabled':''}>${String(x).padStart(2,'0')}:${m?'30':'00'}</button>`}
+ horas.innerHTML=h;
+ horas.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{horas.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));b.classList.add('sel');hora=b.textContent;atualizar()});
+ atualizar();
+});
+document.querySelectorAll('#canal .chip').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('#canal .chip').forEach(c=>c.classList.remove('sel'));b.classList.add('sel');canal=b.dataset.v;
+ campoContato.style.display=canal==='whatsapp'?'none':'block';
+ document.getElementById('label-contato').textContent=canal==='email'?'Seu e-mail':'Seu telefone';
+ contatoIn.type=canal==='email'?'email':'tel';contatoIn.placeholder=canal==='email'?'voce@email.com':'(41) 90000-0000';atualizar()});
+[nomeIn,sel,contatoIn].forEach(el=>el.addEventListener('input',atualizar));
+nomeIn.addEventListener('input',()=>cartao.querySelector('.nome').textContent=nomeIn.value||'Seu Nome');
+function dataBR(){return dataIn.value?new Date(dataIn.value+'T00:00').toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'}):''}
+function atualizar(){const s=servicos[sel.value];
+ document.getElementById('resumo').innerHTML=`<b>${nomeIn.value||'Você'}</b> · ${s.n} (R$ ${s.p})${estiloEscolhido?' · estilo '+estiloEscolhido:''}<br>${dataBR()||'Dia a escolher'} ${hora?'às <b>'+hora+'</b>':''}`;
+ document.getElementById('erro').textContent=''}
+atualizar();
+document.getElementById('form-agenda').addEventListener('submit',e=>{e.preventDefault();
+ const erro=document.getElementById('erro');
+ if(!nomeIn.value.trim())return erro.textContent='Digite seu nome.';
+ if(!dataIn.value)return erro.textContent='Escolha o dia.';
+ if(!hora)return erro.textContent='Escolha um horário.';
+ if(canal!=='whatsapp'&&!contatoIn.value.trim())return erro.textContent='Informe seu contato.';
+ const s=servicos[sel.value];
+ const forma={whatsapp:'por WhatsApp',ligacao:'por ligação no '+contatoIn.value,email:'por e-mail ('+contatoIn.value+')'}[canal];
+ abrirZap(`Olá! Quero reservar um horário:\n• Nome: ${nomeIn.value}\n• Serviço: ${s.n} (R$ ${s.p})${estiloEscolhido?'\n• Estilo: '+estiloEscolhido:''}\n• Dia: ${dataBR()}\n• Horário: ${hora}\n• Prefiro confirmar ${forma}.`);
+ toast('Reserva enviada! Aguarde nossa confirmação ✓');
+});
+function abrirZap(msg){open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank')}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),3500)}
+</script>
 </body>
 </html>
