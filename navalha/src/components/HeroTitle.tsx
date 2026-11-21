@@ -28,9 +28,15 @@ export function HeroTitle() {
       <span aria-hidden="true">
         {partes.map((p) => (
           <span key={p.t} className={p.ouro ? "italic text-ouro" : ""}>
-            {[...p.t].map((c) => (
-              <span key={i} className="letra" style={{ animationDelay: `${i++ * 35}ms` }}>
-                {c === " " ? " " : c}
+            {p.t.split(" ").map((palavra, w, todas) => (
+              <span key={w}>
+                {/* cada palavra fica inteira: o título nunca quebra no meio da palavra */}
+                <span className="inline-block whitespace-nowrap">
+                  {[...palavra].map((c) => (
+                    <span key={i} className="letra" style={{ animationDelay: `${i++ * 35}ms` }}>{c}</span>
+                  ))}
+                </span>
+                {w < todas.length - 1 && " "}
               </span>
             ))}
           </span>
