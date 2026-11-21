@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { @apply bg-fundo text-texto font-sans antialiased; }
+:focus-visible { outline: 2px solid #c9a45c; outline-offset: 3px; }
+::selection { background: #c9a45c; color: #111; }
+
+@layer components {
+  .wrap { @apply mx-auto max-w-6xl px-5; }
+  .tag { @apply mb-3 inline-block text-xs uppercase tracking-[0.3em] text-ouro; }
+  .titulo { @apply font-serif text-4xl font-medium leading-tight sm:text-5xl md:text-6xl; }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-ouro to-ouro-claro px-7 py-3.5 text-sm font-bold text-[#111]
+      transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(201,164,92,.35)] disabled:opacity-60 disabled:hover:translate-y-0;
+  }
+  .btn-ghost { @apply rounded-full border border-linha px-7 py-3.5 text-sm font-bold text-texto transition hover:border-ouro; }
+  .campo { @apply w-full rounded-xl border border-linha bg-fundo px-4 py-3.5 text-texto placeholder:text-mudo/60 transition focus:border-ouro focus:outline-none; }
+  .rotulo { @apply mb-2 block text-xs uppercase tracking-[0.2em] text-mudo; }
+}
+
+/* Revelação ao rolar */
+.rev { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
+.rev-esq { transform: translateX(-50px); }
+.rev-dir { transform: translateX(50px); }
+.rev.on { opacity: 1; transform: none; }
+
+.letra { display: inline-block; opacity: 0; transform: translateY(60%); animation: sobe .9s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes sobe { to { opacity: 1; transform: none; } }
+@keyframes corre { to { transform: translateX(-50%); } }
+.letreiro { animation: corre 35s linear infinite; }
+@keyframes flutua { 10% { opacity: .8 } 90% { opacity: .4 } 100% { transform: translateY(-100vh); opacity: 0 } }
+.particula { position: absolute; bottom: -10px; border-radius: 9999px; background: #c9a45c; opacity: 0; animation: flutua linear infinite; }
+@keyframes brilho { from { background-position: 150% 0 } to { background-position: -100% 0 } }
+.cartao-brilho::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, transparent 30%, rgba(232,204,138,.18) 50%, transparent 70%); background-size: 250% 100%; animation: brilho 5s infinite; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .rev, .letra { opacity: 1 !important; transform: none !important; }
+}
