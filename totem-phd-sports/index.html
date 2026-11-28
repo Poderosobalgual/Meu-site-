@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#EAF2FF">
+  <title>Totem PH.D Sports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="totem.css">
+</head>
+<body>
+
+<!-- ===================== ÍCONES ===================== -->
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-logo" viewBox="0 0 64 64">
+    <g fill="currentColor" stroke="none">
+      <rect x="7" y="19" width="8" height="26" rx="3"/>
+      <rect x="16.5" y="24" width="6.5" height="16" rx="2.5"/>
+      <rect x="49" y="19" width="8" height="26" rx="3"/>
+      <rect x="41" y="24" width="6.5" height="16" rx="2.5"/>
+      <rect x="22" y="29" width="20" height="6" rx="2"/>
+    </g>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M7 12h10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M9.4 9.3a2.7 2.7 0 1 1 3.8 2.5c-.7.3-1.2 1-1.2 1.8v.5"/><path d="M12 17.2v.1"/></symbol>
+  <symbol id="i-dumbbell" viewBox="0 0 24 24"><path d="M6.5 6.5v11M3.5 9v6M17.5 6.5v11M20.5 9v6M6.5 12h11"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.2A6.5 6.5 0 0 1 21.5 20"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2.5L4.5 13.5H12l-1 8 8.5-11H12z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20z"/><path d="M7.5 12h2.2l1.3-2.2 2 4.2 1.3-2h2.2"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M9 11.5V5a1.6 1.6 0 0 1 3.2 0v5.5"/><path d="M12.2 10V8.6a1.6 1.6 0 0 1 3.2 0V11"/><path d="M15.4 10.2a1.6 1.6 0 0 1 3.2 0v4.3a6.5 6.5 0 0 1-6.5 6.5h-.6a5.6 5.6 0 0 1-4.4-2.2L4 15.2a1.6 1.6 0 0 1 2.5-2l2.5 2.6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M12 7v5l3.2 2"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19M6.5 15h4"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><rect x="2.5" y="8" width="13" height="10" rx="2"/><path d="M2.5 11.5h13"/><path d="M18 7.5a5 5 0 0 1 0 7M20.5 5a8.5 8.5 0 0 1 0 12"/></symbol>
+  <symbol id="i-pix" viewBox="0 0 24 24"><path d="M12 2.8l9.2 9.2-9.2 9.2L2.8 12z"/><path d="M12 7.8l4.2 4.2-4.2 4.2L7.8 12z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.8l8 3v6.1c0 4.6-3.4 8.4-8 9.3-4.6-.9-8-4.7-8-9.3V5.8z"/><path d="M8.5 12l2.4 2.4 4.6-4.8"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5"/><path d="M8 10.5V7.8a4 4 0 0 1 8 0v2.7"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.8 1.8H4.2z"/><path d="M10 21a2.2 2.2 0 0 0 4 0"/></symbol>
+  <symbol id="i-backspace" viewBox="0 0 24 24"><path d="M21.5 5H9L2.5 12 9 19h12.5z"/><path d="M12.5 9.5l5 5M17.5 9.5l-5 5"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3.5 8V6a2.5 2.5 0 0 1 2.5-2.5h2M16 3.5h2A2.5 2.5 0 0 1 20.5 6v2M20.5 16v2a2.5 2.5 0 0 1-2.5 2.5h-2M8 20.5H6A2.5 2.5 0 0 1 3.5 18v-2"/><path d="M9 9.5v1M15 9.5v1M9 14.5c.8 1 1.8 1.5 3 1.5s2.2-.5 3-1.5"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="17" rx="2.5"/><path d="M9 4.5V3h6v1.5M8.5 11h7M8.5 15h4.5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 20.5l1.4-4.1A8.5 8.5 0 1 1 8.6 19z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L12 16.5l-5.4 2.9 1.2-5.9-4.4-4.1 6-.7z"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v8h14v-8M12 8.5v12M12 8.5S10.5 4 8 4.2C5.6 4.4 6 8.5 12 8.5zM12 8.5s1.5-4.5 4-4.3c2.4.2 2 4.3-4 4.3z"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11.5A8 8 0 0 0 5.6 7M4 4v4h4M4 12.5A8 8 0 0 0 18.4 17M20 20v-4h-4"/></symbol>
+</svg>
+
+<!-- ===================== PALCO 1080 × 1920 ===================== -->
+<div class="stage" id="stage" data-screen="inicio">
+
+  <!-- Fundo suave azul + amarelo -->
+  <div class="bg" aria-hidden="true">
+    <span class="bg__glow bg__glow--a"></span>
+    <span class="bg__glow bg__glow--b"></span>
+    <span class="bg__glow bg__glow--c"></span>
+    <span class="bg__glow bg__glow--d"></span>
+    <span class="bg__band"></span>
+    <span class="bg__lines"></span>
+  </div>
+
+  <!-- Barra superior -->
+  <header class="topbar">
+    <div class="logo">
+      <span class="logo__mark"><svg class="ic"><use href="#i-logo"/></svg></span>
+      <span class="logo__text"><b>PH<i>.</i>D</b><small>Sports</small></span>
+    </div>
+    <div class="topbar__right">
+      <span class="clock" data-clock></span>
+      <button type="button" class="btn-help" data-action="ajuda">
+        <span class="btn-help__icon"><svg class="ic"><use href="#i-help"/></svg></span>
+        Precisa de ajuda?
+      </button>
+    </div>
+  </header>
+
+  <!-- Etapas -->
+  <ol class="stepper" id="stepper" aria-label="Etapas da matrícula">
+    <li data-step="1"><span class="dot">1</span><span class="stepper__label">Plano</span></li>
+    <li data-step="2"><span class="dot">2</span><span class="stepper__label">Seus dados</span></li>
+    <li data-step="3"><span class="dot">3</span><span class="stepper__label">Pagamento</span></li>
+    <li data-step="4"><span class="dot">4</span><span class="stepper__label">Pronto!</span></li>
+  </ol>
+
+  <main class="screens">
+
+    <!-- ============ 0 · TELA DE DESCANSO ============ -->
+    <section class="screen screen--inicio is-active" data-screen="inicio" data-action="comecar" aria-label="Toque para começar">
+      <div class="attract">
+        <div class="logo logo--xl">
+          <span class="logo__mark"><svg class="ic"><use href="#i-logo"/></svg></span>
+          <span class="logo__text"><b>PH<i>.</i>D</b><small>Sports</small></span>
+        </div>
+
+        <h1 class="attract__title">Seu melhor<br>começa <mark>agora.</mark></h1>
+        <p class="attract__sub">Escolha seu plano e faça sua matrícula aqui mesmo, em menos de 3 minutos.</p>
+
+        <div class="orbit">
+          <span class="orbit__ring"></span>
+          <span class="orbit__disc"></span>
+          <div class="orbit__core">
+            <span class="orbit__eyebrow">Planos a partir de</span>
+            <span class="orbit__price"><small>R$</small><b data-min-int>89</b><small data-min-dec>,90</small></span>
+            <span class="orbit__per">por mês</span>
+          </div>
+          <span class="chip chip--1"><span class="chip__ic"><svg class="ic"><use href="#i-dumbbell"/></svg></span>Musculação</span>
+          <span class="chip chip--2"><span class="chip__ic"><svg class="ic"><use href="#i-users"/></svg></span>Aulas coletivas</span>
+          <span class="chip chip--3"><span class="chip__ic"><svg class="ic"><use href="#i-bolt"/></svg></span>Funcional</span>
+          <span class="chip chip--4"><span class="chip__ic"><svg class="ic"><use href="#i-phone"/></svg></span>App de treinos</span>
+        </div>
+
+        <div class="cta">
+          <span class="btn btn--primary btn--xl">
+            <svg class="ic cta__hand"><use href="#i-hand"/></svg>
+            Toque para começar
+          </span>
+        </div>
+
+        <ul class="attract__perks">
+          <li><svg class="ic"><use href="#i-clock"/></svg>Matrícula em 3 min</li>
+          <li><svg class="ic"><use href="#i-card"/></svg>Pix ou cartão</li>
+          <li><svg class="ic"><use href="#i-shield"/></svg>Dados protegidos</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 1 · PLANOS ============ -->
+    <section class="screen" data-screen="planos">
+      <div class="screen__body">
+        <div class="screen__head">
+          <h1>Escolha seu plano</h1>
+          <p>Quanto maior o plano, maior a sua economia.</p>
+        </div>
+        <div class="plans" id="plans" role="radiogroup" aria-label="Planos"></div>
+      </div>
+      <footer class="actions">
+        <button type="button" class="btn btn--ghost" data-action="voltar">
+          <svg class="ic"><use href="#i-arrow-left"/></svg>Início
+        </button>
+        <div class="actions__info" id="planos-info">Toque em um plano para selecionar</div>
+        <button type="button" class="btn btn--primary is-off" data-action="avancar-planos">
+          Continuar<svg class="ic"><use href="#i-arrow-right"/></svg>
+        </button>
+      </footer>
+    </section>
+
+    <!-- ============ 2 · DADOS ============ -->
+    <section class="screen screen--dados" data-screen="dados">
+      <div class="screen__body" id="dados-body">
+        <div class="screen__head">
+          <h1>Seus dados</h1>
+          <p>Leva menos de 1 minuto. Toque em cada campo para digitar.</p>
+        </div>
+        <div class="form" id="form"></div>
+
+        <div class="checks" id="checks">
+          <button type="button" class="check" role="checkbox" aria-checked="false" data-check="aceite">
+            <span class="check__box"><svg class="ic"><use href="#i-check"/></svg></span>
+            <span>Li e aceito o <b>contrato</b> e o <b>regulamento</b> da academia <small>(disponíveis na recepção e no app)</small></span>
+          </button>
+          <button type="button" class="check" role="checkbox" aria-checked="true" data-check="novidades">
+            <span class="check__box"><svg class="ic"><use href="#i-check"/></svg></span>
+            <span>Quero receber treinos, novidades e promoções pelo WhatsApp</span>
+          </button>
+        </div>
+
+        <p class="lgpd"><svg class="ic"><use href="#i-lock"/></svg>Seus dados são protegidos pela LGPD e apagados desta tela ao final do atendimento.</p>
+      </div>
+      <footer class="actions">
+        <button type="button" class="btn btn--ghost" data-action="voltar">
+          <svg class="ic"><use href="#i-arrow-left"/></svg>Voltar
+        </button>
+        <div class="actions__info" id="dados-info"></div>
+        <button type="button" class="btn btn--primary is-off" data-action="avancar-dados">
+          Ir para pagamento<svg class="ic"><use href="#i-arrow-right"/></svg>
+        </button>
+      </footer>
+    </section>
+
+    <!-- ============ 3 · PAGAMENTO ============ -->
+    <section class="screen" data-screen="pagamento">
+      <div class="screen__body">
+        <div class="screen__head">
+          <h1>Pagamento</h1>
+          <p>Escolha como prefere pagar. É rápido e seguro.</p>
+        </div>
+        <div class="summary" id="summary"></div>
+        <div class="methods" id="methods" role="radiogroup" aria-label="Forma de pagamento">
+          <button type="button" class="method" role="radio" aria-checked="false" data-metodo="pix">
+            <span class="method__ic"><svg class="ic"><use href="#i-pix"/></svg></span>
+            <strong>Pix</strong>
+            <small>Aprovação na hora</small>
+            <span class="method__tick"><svg class="ic"><use href="#i-check"/></svg></span>
+          </button>
+          <button type="button" class="method" role="radio" aria-checked="false" data-metodo="credito">
+            <span class="method__ic"><svg class="ic"><use href="#i-card"/></svg></span>
+            <strong>Crédito</strong>
+            <small>Sem ocupar o limite</small>
+            <span class="method__tick"><svg class="ic"><use href="#i-check"/></svg></span>
+          </button>
+          <button type="button" class="method" role="radio" aria-checked="false" data-metodo="debito">
+            <span class="method__ic"><svg class="ic"><use href="#i-tap"/></svg></span>
+            <strong>Débito</strong>
+            <small>Insira ou aproxime</small>
+            <span class="method__tick"><svg class="ic"><use href="#i-check"/></svg></span>
+          </button>
+        </div>
+        <div class="pay-panel" id="pay-panel"></div>
+      </div>
+      <footer class="actions">
+        <button type="button" class="btn btn--ghost" data-action="voltar">
+          <svg class="ic"><use href="#i-arrow-left"/></svg>Voltar
+        </button>
+        <div class="actions__info" id="pagamento-info"></div>
+        <button type="button" class="btn btn--primary is-off" data-action="pagar" id="btn-pagar">
+          Pagar<svg class="ic"><use href="#i-arrow-right"/></svg>
+        </button>
+      </footer>
+    </section>
+
+    <!-- ============ 4 · SUCESSO ============ -->
+    <section class="screen screen--sucesso" data-screen="sucesso">
+      <div class="screen__body success">
+        <div class="success__badge"><svg class="ic"><use href="#i-check"/></svg></div>
+        <h1 class="success__title">Bem-vindo(a) à PH.D Sports, <span data-s="nome"></span>!</h1>
+        <p class="success__sub">Matrícula confirmada. Agora é só vir treinar.</p>
+
+        <div class="ticket">
+          <div class="ticket__main">
+            <span class="ticket__eyebrow">Nº da matrícula</span>
+            <strong class="ticket__code" data-s="matricula"></strong>
+            <span class="ticket__plan" data-s="plano"></span>
+          </div>
+          <dl class="ticket__info">
+            <div><dt>Mensalidade</dt><dd data-s="mensal"></dd></div>
+            <div><dt>Pago hoje</dt><dd data-s="pago"></dd></div>
+            <div><dt>Forma de pagamento</dt><dd data-s="metodo"></dd></div>
+            <div><dt>Próxima cobrança</dt><dd data-s="proxima"></dd></div>
+          </dl>
+        </div>
+
+        <h2 class="success__h2">Próximos passos</h2>
+        <ol class="next" id="next"></ol>
+
+        <p class="success__sent"><svg class="ic"><use href="#i-chat"/></svg>Comprovante enviado para o WhatsApp <b data-s="tel"></b></p>
+      </div>
+      <footer class="actions">
+        <div class="actions__info actions__info--count">
+          <span class="mini-ring"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><circle class="mini-ring__bar" cx="24" cy="24" r="20"/></svg></span>
+          <span>Voltando ao início em <b data-s="count"></b>s</span>
+        </div>
+        <button type="button" class="btn btn--primary" data-action="finalizar">
+          Finalizar<svg class="ic"><use href="#i-check"/></svg>
+        </button>
+      </footer>
+    </section>
+  </main>
+
+  <!-- ===================== TECLADO VIRTUAL ===================== -->
+  <div class="kb" id="kb" aria-hidden="true">
+    <div class="kb__head">
+      <span class="kb__label">Digitando: <b id="kb-label"></b></span>
+      <button type="button" class="kb__close" data-kb="fechar">Fechar teclado<svg class="ic"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="kb__keys" id="kb-keys"></div>
+  </div>
+
+  <!-- ===================== PAGAMENTO EM ANDAMENTO ===================== -->
+  <div class="overlay" id="overlay" aria-live="polite">
+    <div class="overlay__card">
+      <div class="overlay__anim" id="overlay-anim"></div>
+      <h2 id="overlay-title"></h2>
+      <p id="overlay-text"></p>
+      <div class="overlay__actions" id="overlay-actions"></div>
+    </div>
+  </div>
+
+  <!-- ===================== MODAL · AJUDA ===================== -->
+  <div class="modal" id="modal-ajuda" role="dialog" aria-modal="true" aria-labelledby="ajuda-t">
+    <div class="modal__card">
+      <div class="modal__icon modal__icon--bell"><svg class="ic"><use href="#i-bell"/></svg></div>
+      <h2 id="ajuda-t">Um consultor já está a caminho!</h2>
+      <p>Fique à vontade para continuar. Em instantes alguém da equipe PH.D Sports vem até você.</p>
+      <button type="button" class="btn btn--blue btn--block" data-action="fechar-ajuda">Ok, vou aguardar</button>
+    </div>
+  </div>
+
+  <!-- ===================== MODAL · INATIVIDADE ===================== -->
+  <div class="modal" id="modal-inativo" role="dialog" aria-modal="true" aria-labelledby="inativo-t">
+    <div class="modal__card">
+      <div class="countdown" id="countdown">
+        <svg viewBox="0 0 120 120"><circle class="countdown__track" cx="60" cy="60" r="52"/><circle class="countdown__bar" cx="60" cy="60" r="52"/></svg>
+        <span id="idle-count">15</span>
+      </div>
+      <h2 id="inativo-t">Você ainda está aí?</h2>
+      <p>Por segurança, seus dados serão apagados e o atendimento vai recomeçar.</p>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--ghost" data-action="recomecar"><svg class="ic"><use href="#i-refresh"/></svg>Recomeçar</button>
+        <button type="button" class="btn btn--primary" data-action="continuar">Sim, continuar</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas class="confete" id="confete" width="1080" height="1920" aria-hidden="true"></canvas>
+</div>
+
+<script src="totem.js"></script>
+</body>
+</html>
